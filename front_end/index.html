@@ -1,0 +1,144 @@
+<html>
+<head>
+	<title>LRP</title>
+	<script src="./vue.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style type="text/css">
+	.progress-bar {
+	position: relative;
+	width: 390px;
+	height: 3em;
+	background-color: #111;
+	border-radius: 1.5em;
+	color: white;
+	padding-top: 10px;
+}
+
+.progress-bar::before {
+	content: attr(data-label);
+	display: flex;
+	align-items: center;
+	position: absolute;
+	left: .5em;
+	top: .5em;
+	bottom: .5em;
+	width: calc(var(--width, 0) * 1%);
+	min-width: 0rem;
+	max-width: calc(100% - 1em);
+	background-color: #069;
+	border-radius: 1em;
+	padding: 1em;}</style>
+</head>
+<body>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<span class="contact100-form-title">Loan Repayment Prediction</span>
+			<div id="app">
+				<div class="wrap-input100 validate-input" data-validate="Name is required">
+					<span class="label-input100">Gender</span>
+						<select name="cars" id="cars" v-model="Gender">
+  						<option value="Male">Male</option>
+						  <option value="Female">Female</option>
+						</select></br>
+					<span class="label-input100">Married</span>
+						<select name="cars" id="cars" v-model="Married">
+  						<option value="Yes">Yes</option>
+						  <option value="No">No</option>
+						</select></br>
+					<span class="label-input100">Dependents</span>
+						<select name="cars" id="cars" v-model="Dependents">
+  						<option value="0">0</option>
+						  <option value="1">1</option>
+  						<option value="2">2</option>
+						  <option value="3+">3+</option>
+						</select></br>
+					<span class="label-input100">Education</span>
+						<select name="cars" id="cars" v-model="Education">
+  						<option value="Graduate">Graduate</option>
+						  <option value="Under Graduate">Under Graduate</option>
+						</select></br>
+					<span class="label-input100">Self Employed</span>
+						<select name="cars" id="cars" v-model="Self_employed">
+  						<option value="Yes">Yes</option>
+						  <option value="No">No</option>
+						</select></br>
+					<span class="label-input100">Applicant Income</span>
+						  <input type="number" name="cars" id="cars" v-model="ApplicantIncome">
+						</select></br>
+					<span class="label-input100">Coapplicant Income</span>
+						  <input type="number" name="cars" id="cars" v-model="CoapplicantIncome">
+						</select></br>
+					<span class="label-input100">Loan Amount</span>
+						  <input type="number" name="cars" id="cars" v-model="LoanAmount">
+						</select></br>
+					<span class="label-input100">Loan Amount Term</span>
+						  <input type="number" name="cars" id="cars" v-model="Loan_Amount_Term">
+						</select></br>
+					<span class="label-input100">Credit History</span>
+						<select name="cars" id="cars" v-model="Credit_History">
+  						<option value="0">0</option>
+						  <option value="1">1</option>
+						</select></br>
+					<span class="label-input100">Property Area</span>
+						<select name="cars" id="cars" v-model="Property_Area">
+  						<option value="Rural">Rural</option>
+						  <option value="Semiurban">Semiurban</option>
+						  <option value="Urban">Urban</option>
+						</select>
+				</div>
+			<div class="container-contact100-form-btn">
+				<div class="wrap-contact100-form-btn">
+					<div class="contact100-form-bgbtn"></div>
+						<button v-on:click="call()" class="contact100-form-btn">
+							<span>Analysis</span>
+						</button>
+					</div>
+				</div>
+			<div v-if="message != null" class="progress-bar" style="--width: 0" data-label="Acceptance rate"></div>
+			<template>
+			      <div class="col-md-12 text-center pt-5">
+			            <h5 v-if="value < 0.5  && value!=null">Refused</h5>
+			            <h5 v-else-if="value >= 0.5 && value!=null">Accepted</h5>
+			      </div>
+			</template>
+			</div>
+		</div>
+	</div>
+<script >
+new Vue({
+  el: '#app',
+    data () {
+    return {
+      Gender: null,
+      Married:null,
+      Dependents: null,
+      Education:null,
+      Self_employed: null,
+      ApplicantIncome:null,
+      CoapplicantIncome: null,
+      LoanAmount:null,
+      Loan_Amount_Term: null,
+      Credit_History:null,
+      Property_Area: null,
+      message : null,
+      value: null
+    }
+  },
+  methods : {
+      call : function(){fetch("http://127.0.1:5000",{method: 'POST',headers: {'Accept': 'application/json','Content-Type': 'application/json;charset=utf-8'}, body: JSON.stringify( {'Gender':this.Gender,'Married':this.Married,'Dependents':this.Dependents,'Education':this.Education,'Self_employed':this.Self_employed,'ApplicantIncome':this.ApplicantIncome,'CoapplicantIncome':this.CoapplicantIncome,'LoanAmount':this.LoanAmount,'Loan_Amount_Term':this.Loan_Amount_Term,'Credit_History':this.Credit_History,'Property_Area':this.Property_Area} )}).then(response => response.json()).then(data => this.message=data).then(data => this.value = this.message.result).then(data => (document.getElementsByClassName('progress-bar')[0]).style.setProperty('--width',this.value*100))
+  }},
+});
+</script>
+</body>
+</html>
