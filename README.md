@@ -1,25 +1,89 @@
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <h3 align="center">Loan default prediction</h3>
-</div>
+# 🤖 Loan Default Prediction – Automating Bank Credit Processes Using AI
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+This project applies AI and machine learning to predict whether a customer is likely to default on a loan, enabling banks to make informed and automated credit decisions.
 
-This repository contains the code for the Loan default predcition project.
+---
 
-**NB: This work has been tested on Ubuntu 18.04.**
+## 📊 Problem Statement
 
-### Getting Started
+Banks often struggle to accurately assess credit risk and loan default probability. This project automates that process by using classification models to predict default based on applicant data.
 
-1. Clone the repo.
-2. Install requirements.
-   ```sh
-   pip install -r requirements.txt
-   ```
-3. Run Flask API.
-   ```sh
-   python main.py
-   ```
-4. Open the web app (front_end/index.html)
+---
+
+## 🧠 Key Features
+
+- Predicts loan defaults using historical banking data
+- Compares multiple ML algorithms (Logistic Regression, Random Forest, XGBoost, etc.)
+- Evaluates models via ROC-AUC, F1 score, Precision, and Recall
+- Provides explainability with **SHAP** (SHapley Additive exPlanations)
+- Visualization of feature importance and model decisions
+- End-to-end pipeline from data preprocessing to model interpretation
+
+---
+
+## 🧰 Tech Stack
+
+- **Python**
+- **scikit-learn**
+- **XGBoost**
+- **SHAP**
+- **pandas**, **matplotlib**, **seaborn**
+
+---
+
+## 🛠️ Setup Instructions
+
+1. **Clone the Repository**
+
+```bash
+git clone https://github.com/aimaster-dev/default_loan_prediction.git
+cd default_loan_prediction
+````
+
+2. **Install Dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+3. **Run the Notebook**
+
+Open `loan_default_prediction.ipynb` in Jupyter or run it using:
+
+```bash
+jupyter notebook loan_default_prediction.ipynb
+```
+
+---
+
+## 📈 Model Evaluation
+
+* **Best Model:** XGBoost
+* **ROC-AUC:** High discriminative power
+* **SHAP Values:** Used to interpret individual predictions and global feature impact
+
+---
+
+## 📌 Highlights
+
+* Automated model selection and tuning
+* Transparent credit risk scoring using SHAP
+* Business-focused evaluation for banking applications
+
+---
+
+## 📎 Resources
+
+* 📄 [Project Report (PDF)](https://github.com/aimaster-dev/default_loan_prediction/blob/main/Automating_bank_credit_processes_using_AI.pdf)
+
+---
+
+## 📜 License
+
+MIT License. See `LICENSE` for details.
+
+---
+
+## 🙌 Acknowledgments
+
+Thanks to aimaster-dev for sharing this impactful project in AI-driven finance.
